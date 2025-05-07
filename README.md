@@ -1,61 +1,78 @@
-# Kriptoloji
-🔍 Steganaliz Nedir?
-Steganaliz, bir dosyada (görüntü, ses, video) gizlenmiş bir mesaj olup olmadığını tespit etme veya bu mesajı açığa çıkarma sürecidir. Kriptolojideki "şifre kırma" ne ise, steganografideki karşılığı steganalizdir.
+# 🛡️ Kriptoloji: Steganaliz Teknikleri
 
-📌 1. LSB (Least Significant Bit Insertion) Algoritması
-Gizleme Tekniği:
-LSB yöntemi, dijital medyanın her piksel/ses örneğinin en az anlam taşıyan (LSB) bitlerini gizli verilerle değiştirir. Örneğin bir pikselin RGB değeri (10101100) ise, son bitini (0) gizli veriyle değiştirerek 10101101 yapar.
+## 🔍 Steganaliz Nedir?
 
-Steganaliz:
+**Steganaliz**, bir dosyada (görüntü, ses, video) gizlenmiş bir mesaj olup olmadığını tespit etme veya bu mesajı açığa çıkarma sürecidir.  
+Kriptolojideki "şifre kırma" ne ise, steganografideki karşılığı **steganalizdir**.
 
-İstatistiksel analizler (örneğin Chi-Square testi) ile bit düzeyinde düzensizlikler tespit edilir.
+---
 
-Görsel veya ses kalitesinde gözle fark edilmeyen ama analizle tespit edilebilen sapmalar oluşur.
+## 📌 1. LSB (Least Significant Bit Insertion) Algoritması
 
-📌 2. JPEG Algoritması (DCT – Discrete Cosine Transform)
-Gizleme Tekniği:
-JPEG görüntülerde sıkıştırma DCT (Ayrık Kosinüs Dönüşümü) ile yapılır. Gizli bilgiler, yüksek frekanslı DCT katsayılarının LSB bitlerine gömülür. Bu yöntem daha az fark edilir çünkü insanlar yüksek frekanslı detaylara daha az duyarlıdır.
+### 🔧 Gizleme Tekniği:
+LSB yöntemi, dijital medyanın her piksel/ses örneğinin **en az anlam taşıyan (LSB)** bitlerini gizli verilerle değiştirir.  
+Örneğin: `10101100` → `10101101` (son bit değiştirildi).
 
-Steganaliz:
+### 🕵️‍♂️ Steganaliz:
+- İstatistiksel analizler (ör. Chi-Square testi) ile bit düzeyinde düzensizlikler tespit edilir.
+- Görsel/ses kalitesinde fark edilmeyen ancak analizle bulunabilen sapmalar oluşur.
 
-DCT katsayılarındaki anormallikler tespit edilir.
+---
 
-Histogram ya da JPEG quantization tablosu analiziyle fark edilir.
+## 📌 2. JPEG Algoritması (DCT – Discrete Cosine Transform)
 
-📌 3. BPCS (Bit Plane Complexity Segmentation)
-Gizleme Tekniği:
-BPCS, görüntüleri bit düzeyinde karmaşıklıklarına göre bölümlere ayırır. İnsan gözü tarafından fark edilmeyecek kadar karmaşık (kaotik) bölgelerde veri saklanır.
+### 🔧 Gizleme Tekniği:
+JPEG görüntülerde **Ayrık Kosinüs Dönüşümü (DCT)** kullanılarak sıkıştırma yapılır.  
+Gizli bilgiler, **yüksek frekanslı DCT katsayılarının LSB bitlerine** gömülür.
 
-Avantajı: Çok daha fazla veri saklanabilir.
+### 🕵️‍♂️ Steganaliz:
+- DCT katsayılarındaki anormallikler tespit edilir.
+- Histogram ve JPEG quantization tabloları analiz edilerek fark edilir.
 
-Steganaliz:
+---
 
-Görsel bölgelerin karmaşıklığına ters düşen bilgi yoğunlukları tespit edilir.
+## 📌 3. BPCS (Bit Plane Complexity Segmentation) Algoritması
 
-Görüntünün kaotik bölgeleriyle veri oranı karşılaştırılır.
+### 🔧 Gizleme Tekniği:
+Görüntüler, **bit düzeyindeki karmaşıklıklarına göre** bölümlere ayrılır.  
+**Kaotik (karmaşık) bölgeler**, insan gözü tarafından fark edilemeyecek kadar uygundur ve veri bu bölgelere gizlenir.
 
-📌 4. Maskeleme ve Filtreleme Yöntemleri
-Gizleme Tekniği:
-Özellikle ses ve resim gibi ortamlarda, insanlar tarafından fark edilemeyecek gürültü veya sinyal bölgelerine veri gömülür. Görselde örneğin parlaklık farklarıyla veri saklama yapılabilir.
+### ✅ Avantajı:
+- Daha fazla veri saklama kapasitesi.
 
-Steganaliz:
+### 🕵️‍♂️ Steganaliz:
+- Karmaşık bölgelerdeki bilgi yoğunlukları karşılaştırılır.
+- Görüntünün karmaşıklık düzenine ters düşen veri tespit edilir.
 
-İnsan algısının sınırlarını aşan küçük değişiklikler analizle tespit edilir.
+---
 
-Orijinal dosyayla karşılaştırmalı analiz (differential analysis) yapılabilir.
+## 📌 4. Maskeleme ve Filtreleme Yöntemleri
 
-📌 5. Sezgisel Steganaliz Yöntemleri (Heuristic Methods)
-Teknik:
-Makine öğrenmesi, istatistiksel modelleme veya sinyal işleme ile gizli veri olup olmadığını tahmin etmeye çalışan yaklaşımlardır. Belirli bir algoritmaya bağlı değildirler.
+### 🔧 Gizleme Tekniği:
+Özellikle **ses ve görüntü** dosyalarında, insanların fark edemeyeceği **gürültü/sinyal bölgeleri** kullanılarak veri gömülür.  
+Görsellerde örneğin parlaklık farklarıyla bu yapılabilir.
 
-Kullanılan yöntemler:
+### 🕵️‍♂️ Steganaliz:
+- İnsan algısının fark edemeyeceği küçük değişiklikler analizle tespit edilir.
+- Orijinal dosya ile karşılaştırmalı analiz (**differential analysis**) yapılabilir.
 
-Yapay sinir ağları
+---
 
-Karar ağaçları
+## 📌 5. Sezgisel Steganaliz Yöntemleri (Heuristic Methods)
 
-Anomali tespiti
+### 🔧 Teknik:
+Makine öğrenmesi, istatistiksel modelleme veya sinyal işleme ile **gizli veri olup olmadığını tahmin eder**.  
+Belirli bir algoritmaya bağlı değildir.
 
-SVM (Support Vector Machines)
+### 🛠️ Kullanılan Yöntemler:
+- Yapay sinir ağları (ANN)
+- Karar ağaçları
+- Anomali tespiti
+- Destek vektör makineleri (SVM)
 
-Avantajı: Yeni veya bilinmeyen steganografi tekniklerine karşı etkilidir.
+### ✅ Avantajı:
+- Yeni veya bilinmeyen steganografi tekniklerine karşı bile etkilidir.
+
+---
+
+> Bu doküman, steganografi içeren medya dosyalarındaki gizli verileri tespit etmek için kullanılan başlıca steganaliz tekniklerini özetlemektedir.
